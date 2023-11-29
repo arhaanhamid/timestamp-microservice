@@ -28,11 +28,8 @@ app.get("/api/:date", function (req, res) {
   const resObj = {};
 
   resObj.unix = date.getTime();
-  console.log(date.toUTCString());
-  console.log(date.getDate());
-  console.log(date.getUTCDate());
-  console.log(date.toLocaleDateString);
-  console.log(date.toISOString);
+  resObj.utc = date.toUTCString();
+
   res.json(resObj);
 });
 
