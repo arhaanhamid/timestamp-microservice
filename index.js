@@ -34,10 +34,10 @@ app.get("/api/:date?", function (req, res) {
       date = new Date();
       date.setTime(dateValue);
     }
-  } else if (dateValue !== "") {
-    res.json({ error: "Invalid Date" });
-  } else {
+  } else if (dateValue === undefined) {
     console.log("Empty Parameters, so showing cuurent date.");
+  } else {
+    res.json({ error: "Invalid Date" });
   }
 
   const resObj = {};
