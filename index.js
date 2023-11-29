@@ -31,7 +31,7 @@ app.get("/api/:date", function (req, res) {
     date = new Date(dateValue);
     console.log(date);
     console.log(date.getTime());
-    if (date.getTime() === null) {
+    if (!date.getTime()) {
       date = new Date();
       date.setTime(dateValue);
       console.log(date);
