@@ -27,7 +27,7 @@ app.get("/api/:date", function (req, res) {
   const dateValue = req.params.date;
   const date = new Date();
 
-  date.setTime(typeof dateValue);
+  console.log(typeof dateValue);
   if (typeof dateValue === "Number") {
     date.setTime(dateValue);
     console.log("time changed");
