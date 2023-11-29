@@ -24,12 +24,12 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:date", function (req, res) {
-  const date = new Date(req.params.date);
+  const date = new Date().setTime(req.params.date);
   const resObj = {};
+  console.log(date);
 
   resObj.unix = date.getTime();
   resObj.utc = date.toUTCString();
-
   res.json(resObj);
 });
 
