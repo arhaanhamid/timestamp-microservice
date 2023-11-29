@@ -29,20 +29,21 @@ app.get("/api/:date?", function (req, res) {
   console.log(req.params);
   console.log(dateValue);
 
-  if (new Date(dateValue) instanceof Date && dateValue !== "") {
+  if (dateValue === undefined) {
+    console.log("Empty Parameters, so showing cuurent date.");
+  }
+  if (new Date(dateValue) instanceof Date) {
     console.log("date case");
     date = new Date(dateValue);
     if (!date.getTime()) {
       date = new Date();
       date.setTime(dateValue);
     }
-  } else if (dateValue === "") {
-    // date = new Date();
-    console.log("Empty Parameters, so showing cuurent date.");
   } else {
     console.log("inavalid case");
     res.json({ error: "Invalid Date" });
   }
+
   console.log(date);
   const resObj = {};
   resObj.unix = date.getTime();
