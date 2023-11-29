@@ -29,19 +29,17 @@ app.get("/api/:date", function (req, res) {
 
   if (new Date(dateValue) instanceof Date) {
     date = new Date(dateValue);
-    console.log(date);
-    console.log(date.getTime());
     if (!date.getTime()) {
       date = new Date();
       date.setTime(dateValue);
-      console.log(date);
     }
+  } else if (!dateValue) {
+    console.log("Empty Parameters, so showing cuurent date.");
   } else {
-    console.log("Invalid date value: " + dateValue);
+    res.json({ error: "Invalid Date" });
   }
 
   const resObj = {};
-
   resObj.unix = date.getTime();
   resObj.utc = date.toUTCString();
 
