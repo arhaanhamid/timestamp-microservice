@@ -23,10 +23,12 @@ app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
 
+app.get("/api/:date", function (req, res) {
+  console.log(req);
+  res.send("k");
+});
+
 // listen for requests :)
 var listener = app.listen(process.env.PORT || 3002, function () {
   console.log("Your app is listening on port " + listener.address().port);
-  console.log(process.env.PORT);
-  console.log(listener.address());
-  console.log(listener);
 });
