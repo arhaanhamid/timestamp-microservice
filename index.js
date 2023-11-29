@@ -27,23 +27,23 @@ app.get("/api/:date?", function (req, res) {
   const dateValue = req.params.date;
   let date = new Date();
 
+  // check if parameter is empty
   if (dateValue === undefined) {
     console.log("Empty Parameters, so showing cuurent date.");
   } else {
     date = new Date(dateValue);
-    if (!isNaN(date.getTime())) {
-      //proper date
-    } else {
-      date = new Date().setTime(dateValue);
-      // date.setTime(dateValue);
+    // check if date constructed form param is proper date
+    if (isNaN(date.getTime())) {
+      date = new Date();
+      date.setTime(dateValue);
 
+      // check if the param is not a number and not a proper date
       if (isNaN(date.getTime())) {
         res.json({ error: "Invalid Date" });
       }
     }
   }
 
-  console.log(date);
   const resObj = {};
   resObj.unix = date.getTime();
   resObj.utc = date.toUTCString();
