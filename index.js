@@ -37,7 +37,7 @@ app.get("/api/:date", function (req, res) {
       date.setTime(dateValue);
       break;
     default:
-      date.setDate(dateValue);
+      // date.setDate(dateValue);
       break;
   }
 
