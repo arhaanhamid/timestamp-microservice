@@ -25,7 +25,7 @@ app.get("/api/hello", function (req, res) {
 
 app.get("/api/:date", function (req, res) {
   console.log(req.params);
-  res.json(new Date.now(req.params.date));
+  res.json(new Date(req.params.date).getMilliseconds());
 });
 
 // listen for requests :)
