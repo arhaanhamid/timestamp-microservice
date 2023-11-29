@@ -26,15 +26,13 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date?", function (req, res) {
   const dateValue = req.params.date;
   let date = new Date();
-  console.log(req.params);
-  console.log(dateValue);
 
   if (dateValue === undefined) {
     console.log("Empty Parameters, so showing cuurent date.");
   } else {
     date = new Date(dateValue);
 
-    if (!date.getTime() && isNaN(date.getTime())) {
+    if (!date.getTime() && !isNaN(date.getTime())) {
       res.json({ error: "Invalid Date" });
     } else if (!date.getTime()) {
       date = new Date();
