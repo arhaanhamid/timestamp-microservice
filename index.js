@@ -29,6 +29,7 @@ app.get("/api/:date", function (req, res) {
 
   if (new Date(dateValue) instanceof Date) {
     date.setDate(dateValue);
+    console.log(date);
     console.log("date changed");
   } else if (parseInt(dateValue)) {
     date.setTime(dateValue);
