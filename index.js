@@ -24,17 +24,23 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:date", function (req, res) {
+  const dateValue = req.params.date;
   const date = new Date();
 
-  switch (req.params.date) {
+  console.log(dateValue);
+  console.log(date);
+  console.log(date.setTime(dateValue));
+  console.log(date.setDate(dateValue));
+  switch (dateValue) {
     case typeof Number:
-      date.setTime(req.params.date);
+      date.setTime(dateValue);
       break;
     default:
-      date.setDate(req.params.date);
+      date.setDate(dateValue);
       break;
   }
 
+  console.log(date);
   const resObj = {};
 
   resObj.unix = date.getTime();
