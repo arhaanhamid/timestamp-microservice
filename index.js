@@ -24,7 +24,8 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:date", function (req, res) {
-  res.send(Date.now(req.params.date));
+  console.log(req.params);
+  res.json(new Date.now(req.params.date));
 });
 
 // listen for requests :)
