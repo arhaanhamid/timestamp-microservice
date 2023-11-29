@@ -31,12 +31,15 @@ app.get("/api/:date?", function (req, res) {
     console.log("Empty Parameters, so showing cuurent date.");
   } else {
     date = new Date(dateValue);
-
-    if (isNaN(date.getTime())) {
-      res.json({ error: "Invalid Date" });
-    } else if (!isNaN(date.getTime())) {
+    if (!isNaN(date.getTime())) {
+      //proper date
+    } else {
       date = new Date();
       date.setTime(dateValue);
+
+      if (isNaN(date.getTime())) {
+        res.json({ error: "Invalid Date" });
+      }
     }
   }
 
