@@ -25,7 +25,7 @@ app.get("/api/hello", function (req, res) {
 
 app.get("/api/:date", function (req, res) {
   console.log(req.params);
-  res.json(new Date(req.params.date).getUTCMilliseconds());
+  res.json(new Date(req.params.date).getTime());
 });
 
 // listen for requests :)
