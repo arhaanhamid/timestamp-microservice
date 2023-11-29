@@ -27,6 +27,7 @@ app.get("/api/:date?", function (req, res) {
   const dateValue = req.params.date;
   let date = new Date();
   console.log(req.params);
+  console.log(dateValue);
 
   if (new Date(dateValue) instanceof Date) {
     date = new Date(dateValue);
@@ -39,7 +40,7 @@ app.get("/api/:date?", function (req, res) {
   } else {
     res.json({ error: "Invalid Date" });
   }
-
+  console.log(date);
   const resObj = {};
   resObj.unix = date.getTime();
   resObj.utc = date.toUTCString();
