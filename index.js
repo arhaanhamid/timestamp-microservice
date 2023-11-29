@@ -28,12 +28,10 @@ app.get("/api/:date", function (req, res) {
   const date = new Date();
 
   console.log(typeof dateValue);
-  if (typeof dateValue === "Number") {
+  if (isValidDate(dateValue)) {
+    // date.setDate(dateValue);
+  } else if (parseInt(dateValue)) {
     date.setTime(dateValue);
-    console.log("time changed");
-  } else if (typeof dateValue === "Date") {
-    date.setDate(dateValue);
-    console.log("date changed");
   } else {
     console.log("Invalid date value: " + dateValue);
   }
