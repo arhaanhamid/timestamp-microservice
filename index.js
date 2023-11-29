@@ -26,13 +26,13 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date", function (req, res) {
   const dateValue = req.params.date;
   const date = new Date();
-  console.log(dateValue);
-  console.log(dateValue instanceof Date);
 
-  if (dateValue instanceof Date) {
+  if (new Date(dateValue) instanceof Date) {
     date.setDate(dateValue);
+    console.log("date changed");
   } else if (parseInt(dateValue)) {
     date.setTime(dateValue);
+    console.log("time changed");
   } else {
     console.log("Invalid date value: " + dateValue);
   }
