@@ -26,6 +26,7 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date?", function (req, res) {
   const dateValue = req.params.date;
   let date = new Date();
+  console.log(req.params);
 
   if (new Date(dateValue) instanceof Date) {
     date = new Date(dateValue);
@@ -33,10 +34,10 @@ app.get("/api/:date?", function (req, res) {
       date = new Date();
       date.setTime(dateValue);
     }
-  } else if (dateValue === "") {
-    console.log("Empty Parameters, so showing cuurent date.");
-  } else {
+  } else if (dateValue !== "") {
     res.json({ error: "Invalid Date" });
+  } else {
+    console.log("Empty Parameters, so showing cuurent date.");
   }
 
   const resObj = {};
