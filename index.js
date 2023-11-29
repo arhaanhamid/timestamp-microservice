@@ -24,8 +24,16 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:date", function (req, res) {
-  console.log(req.params);
-  res.json(new Date(req.params.date).getTime());
+  const date = new Date(req.params.date);
+  const resObj = {};
+
+  resObj.unix = date.getTime();
+  console.log(date.toUTCString());
+  console.log(date.getDate());
+  console.log(date.getUTCDate());
+  console.log(date.toLocaleDateString);
+  console.log(date.toISOString);
+  res.json(resObj);
 });
 
 // listen for requests :)
