@@ -31,8 +31,7 @@ app.get("/api/:date?", function (req, res) {
 
   if (dateValue === undefined) {
     console.log("Empty Parameters, so showing cuurent date.");
-  }
-  if (new Date(dateValue) instanceof Date) {
+  } else if (new Date(dateValue) instanceof Date) {
     console.log("date case");
     date = new Date(dateValue);
     if (!date.getTime()) {
