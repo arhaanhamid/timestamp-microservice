@@ -29,14 +29,14 @@ app.get("/api/:date?", function (req, res) {
   console.log(req.params);
   console.log(dateValue);
 
-  if (new Date(dateValue) instanceof Date && !dateValue) {
+  if (new Date(dateValue) instanceof Date && dateValue !== "") {
     console.log("date case");
     date = new Date(dateValue);
     if (!date.getTime()) {
       date = new Date();
       date.setTime(dateValue);
     }
-  } else if (!dateValue) {
+  } else if (dateValue === "") {
     // date = new Date();
     console.log("Empty Parameters, so showing cuurent date.");
   } else {
