@@ -29,8 +29,9 @@ app.get("/api/:date", function (req, res) {
 
   console.log(dateValue);
   console.log(date);
+  console.log("///////////////////");
   console.log(date.setTime(dateValue));
-  console.log(date.setDate(dateValue));
+  // console.log(date.setDate(dateValue));
   switch (dateValue) {
     case typeof Number:
       date.setTime(dateValue);
@@ -40,7 +41,7 @@ app.get("/api/:date", function (req, res) {
       break;
   }
 
-  console.log(date);
+  console.log("final date: " + date);
   const resObj = {};
 
   resObj.unix = date.getTime();
